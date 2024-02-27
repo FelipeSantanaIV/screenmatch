@@ -1,8 +1,6 @@
 package br.com.felipe.screenmatch;
 
-import br.com.felipe.screenmatch.model.DadosSerie;
-import br.com.felipe.screenmatch.service.ConsumeAPI;
-import br.com.felipe.screenmatch.service.ConverteDados;
+import br.com.felipe.screenmatch.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,12 +14,9 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ConsumeAPI consumeAPI = new ConsumeAPI();
-		var json = consumeAPI.obterDados("http://www.omdbapi.com/?t=gilmore+girls&apikey=8b1809b5");
-		System.out.println(json);
-		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibeMenu();
+
 	}
 
 }
