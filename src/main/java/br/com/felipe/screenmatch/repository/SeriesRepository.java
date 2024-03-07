@@ -1,8 +1,10 @@
 package br.com.felipe.screenmatch.repository;
 
 import br.com.felipe.screenmatch.model.Categoria;
+import br.com.felipe.screenmatch.model.Episodio;
 import br.com.felipe.screenmatch.model.Serie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,5 +18,17 @@ public interface SeriesRepository extends JpaRepository<Serie, Long> {
 
     List<Serie> findByGenero(Categoria categoria);
 
-    List<Serie> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int numeroTemporadas, double avaliacao);
+    //List<Serie> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int numeroTemporadas, double avaliacao);
+
+    @Query("SELECT s FROM Serie s WHERE s.totalTemporadas <= :numeroTemporadas AND s.avaliacao >= :avaliacao")
+    List<Serie> buscaSerieTemporadaEAvaliacao(int numeroTemporadas, double avaliacao);
+
+    @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE e.titulo ILIKE %:trechoEpisodio%")
+    List<Episodio> episodiosPorTrecho(String trechoEpisodio);
+
+    @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s =:serie ORDER BY e.avaliacao DESC LIMIT 5")
+    List<Episodio> topEpisodioPorSerie(Serie serie);
+
+    @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s =:serie AND YEAR(e.dataLancamento) >= :anoLancamento")
+    List<Episodio> episodiosPorSerieEAno(Serie serie, int anoLancamento);
 }
