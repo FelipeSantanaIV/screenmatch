@@ -24,7 +24,7 @@ Estes são os EndPoints utilizados no projetos:
 - http://localhost:8080/series/categoria/comédia - Procurar por categoria
 - http://localhost:8080/series/1/temporadas/top - Top 5 Episódios
 
-Todos são metódos GET, pode ser utilizado no PostMan, Insomnia.
+Todas as requisições são metódos GET, pode ser utilizado no PostMan, Insomnia.
 
 ## Projeto Front-End
 
