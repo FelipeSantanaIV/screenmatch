@@ -10,7 +10,7 @@ Projeto criado junto ao curso de formação da Alura "JAVA WEB: CRIE APLICAÇÕE
 
 [![My Skills](https://skillicons.dev/icons?i=java,spring,postgres)](https://skillicons.dev)
 
-Java, Spring Framework, JPA, JPQL, PostgreSQL, Model View Controller (MVC), API REST
+Java, Spring Framework, JPA / HIbernate , JPQL, PostgreSQL, Model View Controller (MVC), API REST
 
 ## End Points
 
